@@ -22,12 +22,12 @@
       {:name fname :extension ""}))
 
 (defn get-file-name [fname fnumber]
-  "Returns the fname string with the fnumber added between the file extension"
+  "Returns the fname string with the fnumber added between it and the file extension"
  (str (:name (split-file-name fname)) (str fnumber (:extension (split-file-name fname)))))
 
 (defn add-prefix-suffix [prefix suffix lines]
   "Returns a new list with the prefix and suffix added to it"
-  ())
+  (concat (reverse (concat (reverse lines) prefix)) suffix))
 
 (defn split-file [n fname]
   "Splits a fname file into n other files"
