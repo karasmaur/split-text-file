@@ -29,9 +29,10 @@
   "Returns a new list with the prefix and suffix added to it"
   (concat (reverse (concat (reverse lines) prefix)) suffix))
 
-(defn split-file [n fname]
-  "Splits a fname file into n other files"
-  (let [partitioned-file (partition-all n (read-lines fname))
-        files-count (count partitioned-file)]
+(defn split-file [n fname prefix suffix]
+  "Splits a fname file into n other files and add the prefix and suffix in each new file"
+  (let [partitioned-file (partition-all n (read-lines fname))]
     (doseq [[idx lines] (map-indexed vector partitioned-file)]
-      (write-lines (get-file-name fname (+ idx 1)) lines))))
+      (write-lines (get-file-name fname (+ idx 1)) (add-prefix-suffix prefix suffix lines)))))
+
+(defn test-split-file [] (split-file 900 "split.txt" (list "Begin") (list "Commit;" "End;")))
