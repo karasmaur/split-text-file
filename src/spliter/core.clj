@@ -19,11 +19,11 @@
   (if (.contains fname ".")
     (let [split-name (str/split fname #"\.")]
       {:name (nth split-name 0) :extension (str "." (nth split-name 1))})
-      {:name fname :extension ""}))
+    {:name fname :extension ""}))
 
 (defn get-file-name [fname fnumber]
   "Returns the fname string with the fnumber added between it and the file extension"
- (str (:name (split-file-name fname)) (str fnumber (:extension (split-file-name fname)))))
+  (str (:name (split-file-name fname)) (str fnumber (:extension (split-file-name fname)))))
 
 (defn add-prefix-suffix [prefix suffix lines]
   "Returns a new list with the prefix and suffix added to it"
