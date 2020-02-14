@@ -36,8 +36,6 @@
     (doseq [[idx lines] (map-indexed vector partitioned-file)]
       (write-lines (get-file-name fname (+ idx 1)) (add-prefix-suffix prefix suffix lines)))))
 
-(defn test-split-file [] (split-file 900 "split.txt" (list "Begin") (list "Commit;" "End;")))
-
 (defn -main [& args]
   (println "File Splitter! Usage(args): java -jar 900 split_file.txt prefix.txt sufix.txt")
   (println "This will split the 'split_file.txt' into other files with 900 lines each with the prefix and sufix")
