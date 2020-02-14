@@ -42,4 +42,8 @@
   (println "File Splitter! Usage(args): java -jar 900 split_file.txt prefix.txt sufix.txt")
   (println "This will split the 'split_file.txt' into other files with 900 lines each with the prefix and sufix")
   (println "Splitting files!"
-           (split-file (Integer/parseInt (nth args 0)) (nth args 1) (read-lines (nth args 2)) (read-lines (nth args 3)))))
+           (split-file
+             (Integer/parseInt (nth args 0))
+             (nth args 1)
+             (try (read-lines (nth args 2)) (catch java.lang.IndexOutOfBoundsException e (list)))
+             (try (read-lines (nth args 3)) (catch java.lang.IndexOutOfBoundsException e (list))))))
